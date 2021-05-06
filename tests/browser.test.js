@@ -31,4 +31,29 @@ describe('Clicking "Pusha till stacken"', () => {
         await alert.sendKeys("Bananer");
         await alert.accept();
     });
+    it('should add pears last in stack', async () => {
+        let push = await driver.findElement(By.id('push'));
+        await push.click();
+        let alert = await driver.switchTo().alert();
+        await alert.sendKeys("Päron");
+        await alert.accept();
+    });
+});
+
+describe('Clicking "Vad finns överest i stacken?"', () => {
+    it('should open a prompt box', async () => {
+        let push = await driver.findElement(By.id('peek'));
+        await push.click();
+        let element = await driver.findElement(By.id('top_of_stack')).getText()
+        expect(element).toBe("Päron")
+    });
+});
+
+describe('Clicking "Poppa stacken!"', () => {
+    it('should open a prompt box', async () => {
+        let push = await driver.findElement(By.id('pop'));
+        await push.click();
+        let text = await driver.switchTo().alert().getText();;
+        expect(text).toBe("Tog bort Päron")
+    });
 });
