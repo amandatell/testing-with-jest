@@ -31,8 +31,3 @@ test('pop returns the last added element', () => {
     let el = stack.pop()
     expect(el).toBe("waw");
 });
-
-test('shift returns the first elements', () => {
-    stack.shift("waw");
-    expect(el).toBe("waw");
-});
